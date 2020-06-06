@@ -1,29 +1,25 @@
-# New Project
+# snowpack-react-ssr
 
-> ✨ Bootstrapped with Create Snowpack App (CSA).
+Minimal example using React server side rendering plus webpack. 
 
-## Available Scripts
+## Features
 
-### npm start
+* Uses Babel Node instead of webpack
+* Uses `renderToNodeStream` for better perf
+* No server side styles setup, todo add material ui
 
-Runs the app in the development mode.
-Open http://localhost:8080 to view it in the browser.
 
-The page will reload if you make edits.
-You will also see any lint errors in the console.
+## Notes on working with snowpack 
 
-### npm test
+See `server/index.js` for implementation. Set HMR_WEBSOCKET_URL to the snowpack server in your server rendered html:
 
-Launches the test runner in the interactive watch mode.
-See the section about running tests for more information.
+```js
+<script>window.HMR_WEBSOCKET_URL = "ws://localhost:8080"</script>
+````
 
-### npm run build
+Include the scripts that the browser version creates:
 
-Builds a static copy of your site to the `build/` folder.
-Your app is ready to be deployed!
-
-**For the best production performance:** Add a build bundler plugin like "@snowpack/plugin-webpack" or "@snowpack/plugin-parcel" to your `snowpack.config.json` config file.
-
-### Q: What about Eject?
-
-No eject needed! Snowpack guarantees zero lock-in, and CSA strives for the same.
+```js
+<script type="module" src="http://localhost:8080/_dist_/index.js"></script>
+<script type="module" src="http://localhost:8080/__snowpack__/hmr.js"></script>
+```
