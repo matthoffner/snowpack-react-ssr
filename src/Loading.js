@@ -19,7 +19,7 @@ function Loading() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Sign up
         </a>
       </header>
       <Shell />

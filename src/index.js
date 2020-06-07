@@ -5,14 +5,16 @@ import Provider from './provider';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
+import fetch from 'isomorphic-fetch';
 import ApolloClient from 'apollo-boost';
 
 const client = new ApolloClient({
-  cache: new InMemoryCache().restore(window.__APOLLO_STATE__),
+  cache: new InMemoryCache().restore(window.__APOLLO_STATE__), 
   ssrForceFetchDelay: 100,
   //  link: new SchemaLink({ schema }),
   link: new HttpLink({
     uri: 'https://m5j9784k8j.sse.codesandbox.io',
+    fetch: fetch
   })
 });
 

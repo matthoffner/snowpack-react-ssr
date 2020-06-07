@@ -6,12 +6,12 @@ import sheetsRegistryStream from './sheets-registry-stream';
 import Provider from '../src/provider';
 import App from '../src/Loading';
 import NotFound from '../src/NotFound';
-import { ApolloProvider } from '@apollo/react-common';
-import { ApolloClient } from 'apollo-client';
+import { ApolloProvider } from '@apollo/react-hooks';
+import ApolloClient from 'apollo-client';
 import { getDataFromTree } from "@apollo/react-ssr";
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from "apollo-cache-inmemory";
-import fetch from 'node-fetch';
+import fetch from 'isomorphic-fetch';
 
 const Router = url => {
     const routes = {
@@ -40,7 +40,7 @@ app.get('*', (req, res) => {
         //   link: new SchemaLink({ schema }),
         link: new HttpLink({
           uri: 'https://m5j9784k8j.sse.codesandbox.io',
-          fetch
+          fetch: fetch
         }),
         cache: new InMemoryCache()
     });

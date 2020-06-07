@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from 'react';
 import Shell from './shell';
+import Menu from './menu';
 
 function App() {
   const DynamicContent = lazy(() => import('./dynamic.js'));
@@ -7,16 +8,9 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>
-          Edit <code>src/App.jsx</code> and save
+          Page loaded
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Menu />
       </header>
       <Suspense fallback={<Shell />}>
         <DynamicContent />
