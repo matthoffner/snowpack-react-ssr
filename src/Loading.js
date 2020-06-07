@@ -11,7 +11,7 @@ function Loading() {
     <div className="App">
       <header className="App-header">
         <p>
-          Loading {canUseDOM ? 'Connected to client' : 'Connected to server'}
+          {canUseDOM ? 'Connected to client' : 'Connected to server'}
         </p>
         <a
           className="App-link"
