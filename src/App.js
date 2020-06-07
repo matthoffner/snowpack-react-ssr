@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { Suspense, lazy } from 'react';
+import Shell from './shell';
 
 function App() {
+  const DynamicContent = lazy(() => import('./dynamic.js'));
   return (
     <div className="App">
       <header className="App-header">
@@ -16,6 +18,9 @@ function App() {
           Learn React
         </a>
       </header>
+      <Suspense fallback={<Shell />}>
+        <DynamicContent />
+      </Suspense>
     </div>
   );
 }

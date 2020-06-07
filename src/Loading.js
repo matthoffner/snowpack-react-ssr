@@ -1,13 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
+import Shell from './shell';
 
-function App() {
+const canUseDOM = !!(
+  (typeof window !== 'undefined' &&
+  window.document && window.document.createElement)
+);
+
+function Loading() {
   return (
     <div className="App">
       <header className="App-header">
-            Loading...
+        <p>
+          Loading {canUseDOM ? 'Connected to client' : 'Connected to server'}
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
       </header>
+      <Shell />
     </div>
   );
 }
 
-export default App;
+export default Loading;
