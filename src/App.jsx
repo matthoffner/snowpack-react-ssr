@@ -5,7 +5,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>
-          Edit <code>src/App.jsx</code> and save asdf asdf asdf
+          Edit <code>src/App.jsx</code> and save
         </p>
         <a
           className="App-link"

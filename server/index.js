@@ -26,7 +26,6 @@ app.get('*', (req, res) => {
         return;
     }
     const routeStream = renderToNodeStream(Route);
-    res.setHeader('Access-Control-Allow-Origin', '*');
     res.write(`
         <html>
             <head>

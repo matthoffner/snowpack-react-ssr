@@ -1,7 +1,8 @@
 {
   "scripts": {
-    "start-server": "babel-node server -x '.js','.svg','.jsx' --config-file ./babel-ssr.config.json",
-    "start": "snowpack dev",
+    "dev": "npm-run-all --parallel server browser",
+    "server": "babel-node server -x '.js','.svg','.jsx' --config-file ./babel-ssr.config.json",
+    "browser": "snowpack dev",
     "build": "snowpack build",
     "test": "jest",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
@@ -24,6 +25,7 @@
     "@testing-library/react": "^10.0.3",
     "babel-node": "0.0.1-security",
     "jest": "^25.4.0",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.0.0",
     "snowpack": "^2.2.0"
   }

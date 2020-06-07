@@ -9,6 +9,16 @@ Minimal example using React server side rendering plus webpack.
 * No server side styles setup, todo add material ui
 
 
+```js
+npm install
+```
+
+```js
+npm run dev
+```
+
+This will run `snowpack dev` and start the react ssr server
+
 ## Notes on working with snowpack 
 
 See `server/index.js` for implementation. Set HMR_WEBSOCKET_URL to the snowpack server in your server rendered html:
