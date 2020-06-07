@@ -2,7 +2,7 @@ import express from 'express';
 import React from 'react';
 import { renderToNodeStream } from 'react-dom/server';
 
-import App from '../src/App.jsx';
+import App from '../src/App.js';
 import NotFound from '../src/NotFound.jsx';
 
 const app = express();
