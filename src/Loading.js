@@ -1,5 +1,8 @@
 import React from 'react';
 import Shell from './shell';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
+import Menu from './menu';
 
 const canUseDOM = !!(
   (typeof window !== 'undefined' &&
@@ -8,22 +11,16 @@ const canUseDOM = !!(
 
 function Loading() {
   return (
-    <div className="App">
+    <Container>
       <header className="App-header">
-        <p>
+        <Menu />
+        <Typography variant="h1">Welcome</Typography>
+        <Typography gutterBottom variant="h4">
           {canUseDOM ? 'Connected to client' : 'Connected to server'}
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Sign up
-        </a>
+        </Typography>
       </header>
       <Shell />
-    </div>
+    </Container>
   );
 }
 
