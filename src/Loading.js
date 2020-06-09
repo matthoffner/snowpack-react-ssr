@@ -11,16 +11,18 @@ const canUseDOM = !!(
 
 function Loading() {
   return (
-    <Container>
-      <header className="App-header">
-        <Menu />
-        <Typography variant="h1">Welcome</Typography>
-        <Typography gutterBottom variant="h4">
-          {canUseDOM ? 'Connected to client' : 'Connected to server'}
-        </Typography>
-      </header>
-      <Shell />
-    </Container>
+    <div id="root">
+      <Container>
+        <header className="App-header">
+          <Menu />
+          <Typography variant="h1">Welcome</Typography>
+          <Typography gutterBottom variant="h4">
+            {canUseDOM ? 'Connected to client' : 'Connected to server'}
+          </Typography>
+        </header>
+        <Shell />
+      </Container>
+    </div>
   );
 }
 

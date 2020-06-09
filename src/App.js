@@ -18,7 +18,7 @@ function App() {
       <Suspense fallback={<Shell />}>
         <DynamicContent />
       </Suspense>
-      <div>test</div>
+      <Typography variant="body1">lorem ipsum</Typography>
     </Container>
   );
 }

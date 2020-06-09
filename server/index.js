@@ -11,11 +11,13 @@ import ApolloClient from 'apollo-client';
 import { getDataFromTree } from "@apollo/react-ssr";
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from "apollo-cache-inmemory";
+import Post from '../src/post';
 import fetch from 'isomorphic-fetch';
 
 const Router = url => {
     const routes = {
-        '/': App
+        '/': App,
+        '/post': Post
     }
     return routes[url];
 }
@@ -63,12 +65,10 @@ app.get('*', (req, res) => {
                 <link rel="canonical" url="${req.url}">
                 <script>window.HMR_WEBSOCKET_URL = "ws://localhost:8080"</script>
             </head>
-            <body>
-                <div id="root">`);
+            <body>`);
         routeStream.pipe(res, { end: false });
         routeStream.on("end", () => {
         res.write(`
-                </div>
                 <script>window.__APOLLO_STATE__=${JSON.stringify(initialState).replace(/</g, '\\u003c')}</script>
                 <script type="module" src="http://localhost:8080/_dist_/index.js"></script>
                 <script type="module" src="http://localhost:8080/__snowpack__/hmr.js"></script>

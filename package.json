@@ -22,9 +22,12 @@
     "express": "^4.17.1",
     "graphql": "^15.1.0",
     "isomorphic-fetch": "^2.2.1",
+    "marked": "^1.1.0",
     "prop-types": "^15.7.2",
     "react": "0.0.0-experimental-33c3af284",
-    "react-dom": "0.0.0-experimental-33c3af284"
+    "react-dom": "0.0.0-experimental-33c3af284",
+    "react-lazy-hydration": "0.0.10",
+    "react-markdown": "^4.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",

@@ -1,10 +1,15 @@
 import React from 'react';
 import Loading from './Loading';
+import Post from './post';
 
 const Route = {
     '/': {
         component: React.lazy(() => import('./App.js')),
         fallback: Loading
+    },
+    '/post': {
+        component: React.lazy(() => import('./post.js')),
+        fallback: Post
     },
     '*': {
         component: React.lazy(() => import('./App.js')),
