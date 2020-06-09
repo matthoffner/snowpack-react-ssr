@@ -1,13 +1,15 @@
 # snowpack-react-ssr
 
-Minimal example using React server side rendering plus webpack. 
+Minimal example using React server side rendering with snowpack. 
 
 ## Features
 
-* Uses Babel Node instead of webpack
+* Uses Babel Node instead of webpack for server
 * Uses `renderToNodeStream` for better perf
-* No server side styles setup, todo add material ui
+* Material UI Streaming SSR
+* Apollo SSR
 
+todo: production build for server and snowpack config
 
 ```js
 npm install
