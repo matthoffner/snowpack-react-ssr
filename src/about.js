@@ -14,10 +14,10 @@ let ReactMarkdown;
 if (!canUseDOM) {
     const fs = require('fs');
     ReactMarkdown = require('react-markdown');
-    markdownFile = fs.readFileSync(`${process.cwd()}/content/projects.md`);
+    markdownFile = fs.readFileSync(`${process.cwd()}/content/about.md`);
 }
 
-export default function Post() {
+export default function About() {
     return (
         <React.Fragment>
           <div id="root">
@@ -26,7 +26,7 @@ export default function Post() {
                   <Menu />
                   <Typography variant="h1">Welcome</Typography>
                   <Typography gutterBottom variant="h4">
-                  About this page
+                    About
                   </Typography>
               </header>
               </Container>

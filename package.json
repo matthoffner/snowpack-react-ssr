@@ -1,8 +1,8 @@
 {
   "scripts": {
     "dev": "npm-run-all --parallel server client",
-    "server": "nodemon -e '*' --watch content --watch server --exec \"babel-node server -x '.js','.svg','.jsx' --config-file ./babel-ssr.config.json\" ",
-    "client": "snowpack dev",
+    "server": "NODE_ENV=development nodemon -e '*' --watch content --watch server --watch src --exec \"babel-node server -x '.js','.svg','.jsx' --config-file ./babel-ssr.config.json\" ",
+    "client": "snowpack dev --secure",
     "build": "snowpack build",
     "test": "jest",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
@@ -19,8 +19,8 @@
     "apollo-boost": "^0.4.9",
     "apollo-client": "^2.6.10",
     "clsx": "^1.1.1",
-    "express": "^4.17.1",
     "graphql": "^15.1.0",
+    "http2": "^3.3.7",
     "isomorphic-fetch": "^2.2.1",
     "prop-types": "^15.7.2",
     "react": "0.0.0-experimental-33c3af284",

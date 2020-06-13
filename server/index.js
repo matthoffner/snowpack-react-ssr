@@ -1,4 +1,5 @@
-import express from 'express';
+import http2 from 'http2';
+import fs from 'fs';
 import React from 'react';
 import { renderToNodeStream } from 'react-dom/server';
 import { ServerStyleSheets } from '@material-ui/styles';
@@ -11,24 +12,24 @@ import ApolloClient from 'apollo-client';
 import { getDataFromTree } from "@apollo/react-ssr";
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from "apollo-cache-inmemory";
-import Post from '../src/post';
+import About from '../src/about';
 import fetch from 'isomorphic-fetch';
+
+const development = process.env.NODE_ENV;
 
 const Router = url => {
     const routes = {
         '/': App,
-        '/post': Post
+        '/about': About
     }
     return routes[url];
 }
 
-const app = express();
-
-app.get('*', (req, res) => {
+const render = (req, res) => {
     const Route = Router(req.url);
     const sheetsRegistry = new ServerStyleSheets();
     if (!Route) {
-        res.status(404);
+        res.statusCode = 404;
         const errorStream = renderToNodeStream(<NotFound />);
         errorStream.pipe(res);
         errorStream.on('end', () => {
@@ -63,22 +64,31 @@ app.get('*', (req, res) => {
         <html>
             <head>
                 <link rel="canonical" url="${req.url}">
-                <script>window.HMR_WEBSOCKET_URL = "ws://localhost:8080"</script>
+                ${development ? `<script>window.HMR_WEBSOCKET_URL = "ws://localhost:8080"</script>` : ''}
             </head>
             <body>`);
         routeStream.pipe(res, { end: false });
         routeStream.on("end", () => {
         res.write(`
                 <script>window.__APOLLO_STATE__=${JSON.stringify(initialState).replace(/</g, '\\u003c')}</script>
-                <script type="module" src="http://localhost:8080/_dist_/index.js"></script>
-                <script type="module" src="http://localhost:8080/__snowpack__/hmr.js"></script>
+                ${development ? `<script type="module" src="https://localhost:8080/_dist_/index.js"></script>
+                <script type="module" src="https://localhost:8080/__snowpack__/hmr.js"></script>` : ''}
             </body>
         </html>`);
         res.end();
         });
     });
-});
+}
 
-app.listen(80, () => {
-    console.log('listening on port 80');
-});
+const serverOptions = {
+    key: fs.readFileSync(`${process.cwd()}/snowpack.key`),
+    cert: fs.readFileSync(`${process.cwd()}/snowpack.cert`)
+};
+
+const server = http2.createSecureServer(serverOptions, render);
+
+server.on('error', (err) => console.error(err));
+
+server.listen(3000, () => {
+    console.log("http2 server started on port", 3000)
+})
