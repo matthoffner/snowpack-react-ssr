@@ -24,10 +24,6 @@ export default function About() {
               <Container>
               <header>
                   <Menu />
-                  <Typography variant="h1">Welcome</Typography>
-                  <Typography gutterBottom variant="h4">
-                    About
-                  </Typography>
               </header>
               </Container>
           </div>

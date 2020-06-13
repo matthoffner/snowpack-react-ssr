@@ -27,6 +27,7 @@ export default function MediaCard() {
           className={classes.media}
           image="https://material-ui.com/static/images/cards/contemplative-reptile.jpg"
           title="Contemplative Reptile"
+          loading="lazy"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">

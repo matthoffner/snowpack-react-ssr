@@ -15,7 +15,7 @@ function Loading() {
       <Container>
         <header className="App-header">
           <Menu />
-          <Typography variant="h2">Hoffner Flying West</Typography>
+          <Typography variant="h2">Snowpack React SSR</Typography>
           <Typography gutterBottom variant="h4">
             {canUseDOM ? 'Connected to client' : 'Connected to server'}
           </Typography>

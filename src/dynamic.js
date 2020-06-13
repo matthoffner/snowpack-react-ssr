@@ -4,10 +4,11 @@ import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 
+
 const data = [
   {
     src:
-      'https://i.ytimg.com/vi/pLqipJNItIo/hqdefault.jpg?sqp=-oaymwEYCNIBEHZIVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBkklsyaw9FxDmMKapyBYCn9tbPNQ',
+      'https://material-ui.com/static/images/cards/contemplative-reptile.jpg',
     title: 'Don Diablo @ Tomorrowland Main Stage 2019 | Official…',
     channel: 'Don Diablo',
     views: '396 k views',
@@ -15,15 +16,14 @@ const data = [
   },
   {
     src:
-      'https://i.ytimg.com/vi/_Uu12zY01ts/hqdefault.jpg?sqp=-oaymwEZCPYBEIoBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLCpX6Jan2rxrCAZxJYDXppTP4MoQA',
+      'https://material-ui.com/static/images/cards/contemplative-reptile.jpg',
     title: 'Queen - Greatest Hits',
     channel: 'Queen Official',
     views: '40 M views',
     createdAt: '3 years ago',
   },
   {
-    src:
-      'https://i.ytimg.com/vi/kkLk2XWMBf8/hqdefault.jpg?sqp=-oaymwEYCNIBEHZIVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLB4GZTFu1Ju2EPPPXnhMZtFVvYBaw',
+    src: 'https://material-ui.com/static/images/cards/contemplative-reptile.jpg',
     title: 'Calvin Harris, Sam Smith - Promises (Official Video)',
     channel: 'Calvin Harris',
     views: '130 M views',
