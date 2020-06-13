@@ -82,7 +82,7 @@ const render = (req, res) => {
 
 const serverOptions = {
     key: fs.readFileSync(`${process.cwd()}/snowpack.key`),
-    cert: fs.readFileSync(`${process.cwd()}/snowpack.cert`)
+    cert: fs.readFileSync(`${process.cwd()}/snowpack.crt`)
 };
 
 const server = http2.createSecureServer(serverOptions, render);

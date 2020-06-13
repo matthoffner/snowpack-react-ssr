@@ -9,11 +9,12 @@ Minimal example using React server side rendering with snowpack.
 * Material UI Streaming SSR
 * Apollo SSR
 
-todo: production build for server and snowpack config
 
 ```js
 npm install
 ```
+
+Generate snowpack.crt and snowpack.key for https/2 dev
 
 ```js
 npm run dev

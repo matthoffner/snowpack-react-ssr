@@ -1,3 +1,5 @@
+*.crt
+*.key
 .build
 build
 web_modules
