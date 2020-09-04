@@ -23,7 +23,7 @@
     "http2": "^3.3.7",
     "isomorphic-fetch": "^2.2.1",
     "prop-types": "^15.7.2",
-    "react": "0.0.0-experimental-33c3af284",
+    "react": "0.14.0",
     "react-dom": "0.0.0-experimental-33c3af284",
     "react-markdown": "^4.3.1"
   },
