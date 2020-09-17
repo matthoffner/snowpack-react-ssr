@@ -22,14 +22,15 @@ const render = (req, res) => {
                     : ''
                 }
             </head>
-            <body>`);
+            <body><div id="root">`);
   const node = renderToNodeStream(<App />);
   node.pipe(res, { end: false });
   node.on('end', () => {
     res.write(
       development
-        ? `<script type="module" src="http://localhost:8080/_dist_/index.js"></script>
-      <script type="module" src="http://localhost:8080/__snowpack__/hmr.js"></script>`
+        ? `</div></body><script type="module" src="http://localhost:8080/_dist_/index.js"></script><script type="module" src="http://localhost:8080/_dist_/Logo.js"></script>
+      <script>window.$RefreshRuntime$ = {register: () => {}, createSignatureFunctionForTransform: () => () => {}};
+      window.$RefreshSig$ = () => (type) => type;</script>`
         : '',
     );
     res.end();
