@@ -38,3 +38,15 @@ Server reloading conflicts with hot reloading since a full refresh is needed for
 ```sh
 npm run serve
 ```
+
+## Production build
+
+```sh
+npm run build
+```
+
+Included is the webpack plugin to optimize the client build. Also included is `modulepreload` script tags. To run the server in production mode:
+
+```sh
+npm run production
+```

@@ -14,7 +14,7 @@ const development = process.env.NODE_ENV === 'development';
 const { preloadTags, scriptTags } = buildScriptHtml();
 
 const app = (req, res) => {
-  if (req.url.endsWith('.js')) {
+  if (req.url.endsWith('.js') || req.url.endsWith('.css')) {
     staticServer(req, res);
   }
   res.write(`

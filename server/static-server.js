@@ -5,6 +5,7 @@ import path from 'path';
 const setContentType = (extension) => {
   const supported = {
     '.js': 'application/javascript',
+    '.css': 'text/css',
   };
   return supported[extension] || 'text/plain';
 };
