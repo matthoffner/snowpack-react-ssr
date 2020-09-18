@@ -9,7 +9,7 @@ const SERVER_PORT = 3000;
 const SNOWPACK_DEV_SCRIPT = `<script type="module" src="http://localhost:8080/_dist_/index.js"></script>
 <script>window.$RefreshRuntime$ = {register: () => {}, createSignatureFunctionForTransform: () => () => {}};
 window.$RefreshSig$ = () => (type) => type;</script>`;
-const criticalCSS = fs.readFileSync(`${process.cwd()}/src/index.css`);
+const criticalCSS = fs.readFileSync(`${process.cwd()}/src/critical.css`);
 
 const render = (req, res) => {
   res.write(`

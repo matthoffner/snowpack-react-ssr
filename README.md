@@ -32,3 +32,9 @@ npm run client
 ```
 
 Will run on port 8080 by default.
+
+Its worth noting that server reloading conflicts with hot reloading since a full refresh is needed for server rendered html updates to show. I've included a separate option that will restart the server for changes to the src directory.
+
+```sh
+npm run serve
+```

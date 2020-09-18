@@ -1,8 +1,10 @@
 {
   "scripts": {
     "start": "npm-run-all --parallel server client",
+    "serve": "npm-run-all --parallel server-reload client",
     "client": "snowpack dev",
     "server": "NODE_ENV=development nodemon -e '*' --watch content --watch server --exec \"babel-node server -x '.js','.jsx' --config-file ./babel-ssr.config.json\" ",
+    "dev-server": "NODE_ENV=development nodemon -e '*' --watch content --watch server --watch src --exec \"babel-node server -x '.js','.jsx' --config-file ./babel-ssr.config.json\" ",
     "build": "snowpack build",
     "test": "jest",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
