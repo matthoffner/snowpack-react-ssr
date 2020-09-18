@@ -4,10 +4,10 @@ Minimal example using React server side rendering with snowpack.
 
 ## Features
 
-- Babel node for SSR JSX support
-- `renderToNodeStream` for improved SSR performance
+- Babel node for server side jsx support
+- `renderToNodeStream` for improved server rendering performance
 - React Refresh works Snowpack
-- Injects CSS server side for optimal FCP
+- Inlines CSS server side for optimal first contentful paint
 
 ## Usage
 
