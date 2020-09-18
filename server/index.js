@@ -6,6 +6,9 @@ import App from '../src/App';
 
 const development = process.env.NODE_ENV;
 const SERVER_PORT = 3000;
+const SNOWPACK_DEV_SCRIPT = `<script type="module" src="http://localhost:8080/_dist_/index.js"></script>
+<script>window.$RefreshRuntime$ = {register: () => {}, createSignatureFunctionForTransform: () => () => {}};
+window.$RefreshSig$ = () => (type) => type;</script>`;
 const criticalCSS = fs.readFileSync(`${process.cwd()}/src/index.css`);
 
 const render = (req, res) => {
@@ -26,13 +29,7 @@ const render = (req, res) => {
   const node = renderToNodeStream(<App />);
   node.pipe(res, { end: false });
   node.on('end', () => {
-    res.write(
-      development
-        ? `</div></body><script type="module" src="http://localhost:8080/_dist_/index.js"></script><script type="module" src="http://localhost:8080/_dist_/Logo.js"></script>
-      <script>window.$RefreshRuntime$ = {register: () => {}, createSignatureFunctionForTransform: () => () => {}};
-      window.$RefreshSig$ = () => (type) => type;</script>`
-        : '',
-    );
+    res.write(development ? `</div></body>${SNOWPACK_DEV_SCRIPT}` : '');
     res.end();
   });
 };
