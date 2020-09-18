@@ -1,6 +1,14 @@
 {
   "extends": "@snowpack/app-scripts-react",
-  "plugins": [],
+  "plugins": [
+    [
+      "@snowpack/plugin-webpack",
+      {
+        "sourceMap": true,
+        "manifest": true
+      }
+    ]
+  ],
   "devOptions": {
     "open": "none"
   }

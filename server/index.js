@@ -1,17 +1,22 @@
 import React from 'react';
 import { renderToNodeStream } from 'react-dom/server';
 import http from 'http';
-import fs from 'fs';
-import App from '../src/App';
+import staticServer from './static-server';
+import { buildScriptHtml, criticalCSS } from './utils';
+import {
+  SERVER_PORT,
+  SNOWPACK_HMR_SCRIPT,
+  SNOWPACK_DEV_SCRIPT,
+} from './constants';
+import AppComponent from '../src/App';
 
-const development = process.env.NODE_ENV;
-const SERVER_PORT = 3000;
-const SNOWPACK_DEV_SCRIPT = `<script type="module" src="http://localhost:8080/_dist_/index.js"></script>
-<script>window.$RefreshRuntime$ = {register: () => {}, createSignatureFunctionForTransform: () => () => {}};
-window.$RefreshSig$ = () => (type) => type;</script>`;
-const criticalCSS = fs.readFileSync(`${process.cwd()}/src/critical.css`);
+const development = process.env.NODE_ENV === 'development';
+const { preloadTags, scriptTags } = buildScriptHtml();
 
-const render = (req, res) => {
+const app = (req, res) => {
+  if (req.url.endsWith('.js')) {
+    staticServer(req, res);
+  }
   res.write(`
         <html>
             <head>
@@ -19,22 +24,18 @@ const render = (req, res) => {
                 <style>
                   ${criticalCSS.toString()}
                 </style>
-                ${
-                  development
-                    ? `<script>window.HMR_WEBSOCKET_URL = "ws://localhost:8080"</script>`
-                    : ''
-                }
+                ${development ? SNOWPACK_HMR_SCRIPT : preloadTags}
             </head>
             <body><div id="root">`);
-  const node = renderToNodeStream(<App />);
+  const node = renderToNodeStream(<AppComponent />);
   node.pipe(res, { end: false });
   node.on('end', () => {
-    res.write(development ? `</div></body>${SNOWPACK_DEV_SCRIPT}` : '');
+    res.write(development ? `</div></body>${SNOWPACK_DEV_SCRIPT}` : scriptTags);
     res.end();
   });
 };
 
-const server = http.createServer(render);
+const server = http.createServer(app);
 
 server.on('error', (err) => console.error(err));
 
