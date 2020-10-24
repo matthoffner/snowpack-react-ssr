@@ -1,6 +1,7 @@
 import zlib from 'zlib';
 import stream from 'stream';
 import path from 'path';
+import fs from 'fs';
 
 const setContentType = (extension) => {
   const supported = {

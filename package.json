@@ -3,9 +3,9 @@
     "start": "npm-run-all --parallel server client",
     "serve": "npm-run-all --parallel dev-server client",
     "client": "snowpack dev",
-    "server": "NODE_ENV=development nodemon -e '*' --watch content --watch server --exec \"babel-node server -x '.js','.jsx' --config-file ./babel-ssr.config.json\" ",
-    "dev-server": "NODE_ENV=development nodemon -e '*' --watch content --watch server --watch src --exec \"babel-node server -x '.js','.jsx' --config-file ./babel-ssr.config.json\" ",
-    "production": "NODE_ENV=production babel-node server -x '.js','.jsx' --config-file ./babel-ssr.config.json",
+    "server": "cross-env NODE_ENV=development nodemon -e '*' --watch content --watch server --exec \"babel-node server -x '.js','.jsx' --config-file ./babel-ssr.config.json\" ",
+    "dev-server": "cross-env NODE_ENV=development nodemon -e '*' --watch content --watch server --watch src --exec \"babel-node server -x '.js','.jsx' --config-file ./babel-ssr.config.json\" ",
+    "production": "cross-env NODE_ENV=production babel-node server -x '.js','.jsx' --config-file ./babel-ssr.config.json",
     "build": "snowpack build",
     "test": "jest",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
@@ -17,6 +17,7 @@
     "zlib": "^1.0.5"
   },
   "devDependencies": {
+    "cross-env": "^7.0.2",
     "@babel/node": "^7.10.5",
     "@snowpack/app-scripts-react": "^1.10.0",
     "@snowpack/plugin-webpack": "^2.0.12",

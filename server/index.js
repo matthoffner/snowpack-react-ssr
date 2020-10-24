@@ -14,10 +14,14 @@ const development = process.env.NODE_ENV === 'development';
 const { preloadTags, scriptTags } = buildScriptHtml();
 
 const app = (req, res) => {
-  if (req.url.endsWith('.js') || req.url.endsWith('.css')) {
+  if (
+    req.url.endsWith('.js') ||
+    req.url.endsWith('.map') ||
+    req.url.endsWith('.css')
+  ) {
     staticServer(req, res);
-  }
-  res.write(`
+  } else {
+    res.write(`
         <html>
             <head>
                 <link rel="canonical" url="${req.url}">
@@ -27,12 +31,17 @@ const app = (req, res) => {
                 ${development ? SNOWPACK_HMR_SCRIPT : preloadTags}
             </head>
             <body><div id="root">`);
-  const node = renderToNodeStream(<AppComponent />);
-  node.pipe(res, { end: false });
-  node.on('end', () => {
-    res.write(development ? `</div></body>${SNOWPACK_DEV_SCRIPT}` : scriptTags);
-    res.end();
-  });
+    const node = renderToNodeStream(<AppComponent />);
+    node.pipe(res, { end: false });
+    node.on('end', () => {
+      res.write(
+        development
+          ? `</div></body>${SNOWPACK_DEV_SCRIPT}</html>`
+          : `</div></body>${scriptTags}</html>`,
+      );
+      res.end();
+    });
+  }
 };
 
 const server = http.createServer(app);
